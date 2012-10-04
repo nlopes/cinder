@@ -151,7 +151,7 @@ class TgtAdm(TargetAdmin):
 
     def remove_iscsi_target(self, tid, lun, vol_id, **kwargs):
         LOG.info(_('Removing volume: %s') % vol_id)
-        vol_uuid_file = 'volume-%s' % vol_id
+        vol_uuid_file = FLAGS.volume_name_template % vol_id
         volume_path = os.path.join(FLAGS.volumes_dir, vol_uuid_file)
         if os.path.isfile(volume_path):
             iqn = '%s%s' % (FLAGS.iscsi_target_prefix,
